@@ -12,7 +12,7 @@ import static android.view.View.*;
 
 public class MainActivity extends AppCompatActivity implements OnClickListener{
 
-    Button toastBtn,alertDialogdBtn,possitiveadBtn,panAdBtn4,adpBtn5,adpBtn6;
+    Button toastBtn,alertDialogdBtn,possitiveadBtn,panAdBtn,mustpnadBtn,npnadpBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,9 +25,9 @@ public class MainActivity extends AppCompatActivity implements OnClickListener{
         toastBtn.setOnClickListener(this);
         alertDialogdBtn.setOnClickListener(this);
         possitiveadBtn.setOnClickListener(this);
-        panAdBtn4.setOnClickListener(this);
-        adpBtn5.setOnClickListener(this);
-        adpBtn6.setOnClickListener(this);
+        panAdBtn.setOnClickListener(this);
+        mustpnadBtn.setOnClickListener(this);
+        npnadpBtn.setOnClickListener(this);
     }
 
 
@@ -36,9 +36,9 @@ public class MainActivity extends AppCompatActivity implements OnClickListener{
         toastBtn = findViewById(R.id.button1);
         alertDialogdBtn = findViewById(R.id.button2);
         possitiveadBtn = findViewById(R.id.button3);
-        panAdBtn4 = findViewById(R.id.button4);
-        adpBtn5 = findViewById(R.id.button5);
-        adpBtn6 = findViewById(R.id.button6);
+        panAdBtn = findViewById(R.id.button4);
+        mustpnadBtn = findViewById(R.id.button5);
+        npnadpBtn = findViewById(R.id.button6);
     }
 
 
@@ -97,9 +97,36 @@ public class MainActivity extends AppCompatActivity implements OnClickListener{
                             dialog.cancel();
                         }
                     }).show();
+
         }
         else if(v.getId() == R.id.button6){
-            Toast.makeText(this,"Button 6  has been clicked",Toast.LENGTH_LONG).show();
+            //Toast.makeText(this,"Button 4  has been clicked",Toast.LENGTH_LONG).show();
+            new AlertDialog.Builder(this).setTitle("Are you sure?")
+                    .setMessage("Do you want to delete.").setIcon(R.drawable.ic_launcher_background).setCancelable(false)
+
+                    .setNeutralButton("Neutral", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            Toast.makeText(MainActivity.this,"Neutral Function will be executed.",Toast.LENGTH_LONG).show();
+                            dialog.cancel();
+                        }
+                    })
+
+                    .setNegativeButton("Negative Side", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            Toast.makeText(MainActivity.this,"Negative Side Function wont be executed.",Toast.LENGTH_LONG).show();
+                            dialog.cancel();
+                        }
+                    })
+                    .setPositiveButton("Positive Side", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            Toast.makeText(MainActivity.this,"Positive Side Function will be executed.",Toast.LENGTH_LONG).show();
+                            dialog.cancel();
+                        }
+                    })
+                    .show();
         }
 
     }
