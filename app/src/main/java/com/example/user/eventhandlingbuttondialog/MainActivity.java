@@ -12,7 +12,7 @@ import static android.view.View.*;
 
 public class MainActivity extends AppCompatActivity implements OnClickListener{
 
-    Button toastBtn,alertDialogdBtn,possitiveadBtn,adpBtn4,adpBtn5,adpBtn6;
+    Button toastBtn,alertDialogdBtn,possitiveadBtn,panAdBtn4,adpBtn5,adpBtn6;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,7 +25,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener{
         toastBtn.setOnClickListener(this);
         alertDialogdBtn.setOnClickListener(this);
         possitiveadBtn.setOnClickListener(this);
-        adpBtn4.setOnClickListener(this);
+        panAdBtn4.setOnClickListener(this);
         adpBtn5.setOnClickListener(this);
         adpBtn6.setOnClickListener(this);
     }
@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener{
         toastBtn = findViewById(R.id.button1);
         alertDialogdBtn = findViewById(R.id.button2);
         possitiveadBtn = findViewById(R.id.button3);
-        adpBtn4 = findViewById(R.id.button4);
+        panAdBtn4 = findViewById(R.id.button4);
         adpBtn5 = findViewById(R.id.button5);
         adpBtn6 = findViewById(R.id.button6);
     }
@@ -63,7 +63,20 @@ public class MainActivity extends AppCompatActivity implements OnClickListener{
 
         }
         else if(v.getId() == R.id.button4){
-            Toast.makeText(this,"Button 4  has been clicked",Toast.LENGTH_LONG).show();
+            //Toast.makeText(this,"Button 4  has been clicked",Toast.LENGTH_LONG).show();
+            new AlertDialog.Builder(this).setTitle("Are you sure?").setMessage("Do you want to delete.").setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    Toast.makeText(MainActivity.this,"Delete Function will be executed.",Toast.LENGTH_LONG).show();
+                    dialog.cancel();
+                }
+            }).setNegativeButton("No", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    Toast.makeText(MainActivity.this,"Delete Function wont be executed.",Toast.LENGTH_LONG).show();
+                    dialog.cancel();
+                }
+            }).show();
         }
         else if(v.getId() == R.id.button5){
             Toast.makeText(this,"Button 5  has been clicked",Toast.LENGTH_LONG).show();
