@@ -46,13 +46,15 @@ public class MainActivity extends AppCompatActivity implements OnClickListener{
     @Override
     public void onClick(View v) {
         if(v.getId() == R.id.button1){
+            //This is a simple Toast Message.
             Toast.makeText(this,"This is a Toast Message.\nWhen you click this Button \nA Toast Message will appear.",Toast.LENGTH_LONG).show();
         }
         else if(v.getId() == R.id.button2){
-            //Toast.makeText(this,"Button 2  has been clicked",Toast.LENGTH_LONG).show();
+            //This is for Alert S button which shows Simple Alert Dialog
             new AlertDialog.Builder(this).setTitle("Title Section").setMessage("This is message Section.\nSo write down what you like to show into  message section.").show();
         }
         else if(v.getId() == R.id.button3){
+            //This is for Alert P button which shows Only positive menu
             new AlertDialog.Builder(this).setTitle("Title").setMessage("This is Message section.").setPositiveButton("OK", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
@@ -63,7 +65,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener{
 
         }
         else if(v.getId() == R.id.button4){
-            //Toast.makeText(this,"Button 4  has been clicked",Toast.LENGTH_LONG).show();
+            //This is for Alert PN button which shows both positive and negative menu
             new AlertDialog.Builder(this).setTitle("Are you sure?").setMessage("Do you want to delete.").setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
@@ -79,7 +81,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener{
             }).show();
         }
         else if(v.getId() == R.id.button5){
-            //Toast.makeText(this,"Button 4  has been clicked",Toast.LENGTH_LONG).show();
+            //This is for Alert MC button which ensure must choose positive or negative menu options
             new AlertDialog.Builder(this).setTitle("Are you sure?")
                     .setMessage("Do you want to delete.").setIcon(R.drawable.ic_launcher_background).setCancelable(false)
 
@@ -100,7 +102,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener{
 
         }
         else if(v.getId() == R.id.button6){
-            //Toast.makeText(this,"Button 4  has been clicked",Toast.LENGTH_LONG).show();
+            //This is for 3 Options button which shows neutral, positive and negative menu
             new AlertDialog.Builder(this).setTitle("Are you sure?")
                     .setMessage("Do you want to delete.").setIcon(R.drawable.ic_launcher_background).setCancelable(false)
 
