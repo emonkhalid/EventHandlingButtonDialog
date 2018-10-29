@@ -8,11 +8,14 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+
 import static android.view.View.*;
 
 public class MainActivity extends AppCompatActivity implements OnClickListener{
 
-    Button toastBtn,alertDialogdBtn,possitiveadBtn,panAdBtn,mustpnadBtn,npnadpBtn;
+    Button toastBtn,alertDialogdBtn,possitiveadBtn,panAdBtn,mustpnadBtn,npnadpBtn,lvBtn,clBtn,rdBtn;
+    ArrayList<Integer> selectedItem;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +31,9 @@ public class MainActivity extends AppCompatActivity implements OnClickListener{
         panAdBtn.setOnClickListener(this);
         mustpnadBtn.setOnClickListener(this);
         npnadpBtn.setOnClickListener(this);
+        lvBtn.setOnClickListener(this);
+        clBtn.setOnClickListener(this);
+        rdBtn.setOnClickListener(this);
     }
 
 
@@ -39,6 +45,9 @@ public class MainActivity extends AppCompatActivity implements OnClickListener{
         panAdBtn = findViewById(R.id.button4);
         mustpnadBtn = findViewById(R.id.button5);
         npnadpBtn = findViewById(R.id.button6);
+        lvBtn = findViewById(R.id.button7);
+        clBtn = findViewById(R.id.button8);
+        rdBtn = findViewById(R.id.button9);
     }
 
 
@@ -129,6 +138,69 @@ public class MainActivity extends AppCompatActivity implements OnClickListener{
                         }
                     })
                     .show();
+        }
+
+        else if(v.getId() == R.id.button7){
+            //This is for List View button which shows List of items in Alert Dialog
+            final CharSequence[] items = {"Argentina","Brazil","Germany","England","Italy","Franch"};
+            AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+            builder.setTitle("Choose Your Favourite Football Team?");
+            builder.setItems(items, new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    Toast.makeText(MainActivity.this,"You Choose "+items[which],Toast.LENGTH_LONG).show();
+                    dialog.dismiss();
+
+                }
+            });
+            builder.show();
+
+        }
+
+        else if(v.getId() == R.id.button8){
+            //This is for Check Box button which shows List of checked items in Alert Dialog
+            selectedItem = new ArrayList<Integer>();
+            AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+            builder.setTitle("Choose Your Home Land:");
+            builder.setMultiChoiceItems(R.array.countries, null, new DialogInterface.OnMultiChoiceClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which, boolean isChecked) {
+                    if(isChecked){
+                        selectedItem.add(which);
+                    }
+                    else if(selectedItem.contains(which)){
+                        selectedItem.remove(Integer.valueOf(which));
+                    }
+                }
+            });
+            //This positive button code is to display selected index inside Alert Dialog
+            builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    String selectedIndex="";
+                    for(Integer i:selectedItem){
+                        selectedIndex +=i+" ";
+                    }
+                    Toast.makeText(MainActivity.this,"Selected Index is:" +selectedIndex,Toast.LENGTH_LONG).show();
+                }
+            });
+            builder.show();
+
+        }
+
+        else if(v.getId() == R.id.button9){
+            //This is for Radio button which shows a List to choose item through radio  in Alert Dialog
+            AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+            builder.setTitle("Choose Your Favourite Cricket Team?");
+            builder.setSingleChoiceItems(R.array.countries, 1, new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    Toast.makeText(MainActivity.this,"Your Home land index is:"+ which,Toast.LENGTH_LONG).show();
+                    dialog.dismiss();
+                }
+            });
+            builder.show();
+
         }
 
     }

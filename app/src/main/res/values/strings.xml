@@ -1,4 +1,12 @@
 <resources>
     <string name="app_name">Event Handling Button Dialog</string>
     <string name="app_title_heading">Event Handling with Button and Dialog.</string>
+    <array name="countries">
+        <item>Australia</item>
+        <item>Bangladesh</item>
+        <item>Canada</item>
+        <item>Italy</item>
+        <item>Germany</item>
+        <item>Russia</item>
+    </array>
 </resources>
