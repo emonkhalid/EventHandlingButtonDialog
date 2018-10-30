@@ -23,10 +23,10 @@ public class MainActivity extends AppCompatActivity implements OnClickListener{
 
     Button toastBtn,alertDialogdBtn,possitiveadBtn,panAdBtn,mustpnadBtn,npnadpBtn,lvBtn,clBtn,rdBtn,cdBtn,loadCusLayout;
     ArrayList<Integer> selectedItem;
-    EditText etDate;
+    EditText dateText;
     DatePickerDialog datePickerDialog;
     Calendar dateCalendar;
-    private static SimpleDateFormat format = new SimpleDateFormat("yyyy-dd-mm",Locale.ENGLISH);
+    private static SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd",Locale.ENGLISH);
 
 
     @Override
@@ -59,26 +59,29 @@ public class MainActivity extends AppCompatActivity implements OnClickListener{
         panAdBtn = (Button)findViewById(R.id.button4);
         mustpnadBtn = (Button)findViewById(R.id.button5);
         npnadpBtn = (Button)findViewById(R.id.button6);
+        ////This is for List View Button
         lvBtn = (Button)findViewById(R.id.button7);
+        //This is for CheckList button
         clBtn = (Button)findViewById(R.id.button8);
+        //This is for Radio button
         rdBtn = (Button)findViewById(R.id.button9);
+        //This button is for Choose Date
         cdBtn = (Button)findViewById(R.id.button10);
-        etDate = (EditText)findViewById(R.id.editText);
+        dateText = (EditText)findViewById(R.id.editText);
         Calendar newCalender = Calendar.getInstance();
-        datePickerDialog = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
+        datePickerDialog = new DatePickerDialog(MainActivity.this, new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
                 dateCalendar = Calendar.getInstance();
                 dateCalendar.set(year,month,dayOfMonth);
-                etDate.setText(format.format(dateCalendar.getTime()));
+                dateText.setText(format.format(dateCalendar.getTime()));
             }
         }, newCalender.get(Calendar.YEAR),
                 newCalender.get(Calendar.MONTH),
                 newCalender.get(Calendar.DAY_OF_MONTH)
         );
-
+        //This button is for custom layout
         loadCusLayout = (Button)findViewById(R.id.button11);
-
 
     }
 
