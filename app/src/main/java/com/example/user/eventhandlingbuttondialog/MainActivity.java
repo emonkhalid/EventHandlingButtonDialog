@@ -5,6 +5,7 @@ import android.content.DialogInterface;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -20,7 +21,7 @@ import static android.view.View.*;
 
 public class MainActivity extends AppCompatActivity implements OnClickListener{
 
-    Button toastBtn,alertDialogdBtn,possitiveadBtn,panAdBtn,mustpnadBtn,npnadpBtn,lvBtn,clBtn,rdBtn,cdBtn;
+    Button toastBtn,alertDialogdBtn,possitiveadBtn,panAdBtn,mustpnadBtn,npnadpBtn,lvBtn,clBtn,rdBtn,cdBtn,loadCusLayout;
     ArrayList<Integer> selectedItem;
     EditText etDate;
     DatePickerDialog datePickerDialog;
@@ -46,6 +47,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener{
         clBtn.setOnClickListener(this);
         rdBtn.setOnClickListener(this);
         cdBtn.setOnClickListener(this);
+        loadCusLayout.setOnClickListener(this);
     }
 
 
@@ -75,6 +77,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener{
                 newCalender.get(Calendar.DAY_OF_MONTH)
         );
 
+        loadCusLayout = (Button)findViewById(R.id.button11);
 
 
     }
@@ -237,6 +240,22 @@ public class MainActivity extends AppCompatActivity implements OnClickListener{
             datePickerDialog.show();
 
         }
+
+        else if(v.getId() == R.id.button11){
+            //This is for Choose Date Button via DatePicker
+            AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+            LayoutInflater inflater = MainActivity.this.getLayoutInflater();
+            builder.setView(inflater.inflate(R.layout.login,null));
+            builder.setPositiveButton("Login", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    Toast.makeText(MainActivity.this,"Login Successfully",Toast.LENGTH_LONG).show();
+                }
+            });
+            builder.show();
+
+        }
+
 
     }
 

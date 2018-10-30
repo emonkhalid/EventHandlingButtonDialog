@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:orientation="vertical"
     tools:context=".MainActivity">
 
@@ -11,11 +11,11 @@
         android:id="@+id/textView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="5sp"
         android:text="@string/app_title_heading"
         android:textAlignment="center"
         android:textSize="18sp"
-        android:textStyle="bold"
-        android:layout_margin="5sp"/>
+        android:textStyle="bold" />
 
     <LinearLayout
         android:id="@+id/linearlayouthorizon1"
@@ -52,9 +52,9 @@
         android:id="@+id/linearlayouthorizon2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="5dp"
         android:gravity="center_horizontal"
-        android:orientation="horizontal"
-        android:layout_margin="5dp">
+        android:orientation="horizontal">
 
         <Button
             android:id="@+id/button4"
@@ -83,9 +83,9 @@
         android:id="@+id/linearlayouthorizon3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="5dp"
         android:gravity="center_horizontal|center"
-        android:orientation="horizontal"
-        android:layout_margin="5dp">
+        android:orientation="horizontal">
 
         <Button
             android:id="@+id/button7"
@@ -113,8 +113,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="10dp"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:padding="10dp">
 
         <Button
             android:id="@+id/button10"
@@ -131,6 +131,15 @@
             android:ems="10"
             android:inputType="textPersonName"
             android:text="Name" />
+
     </LinearLayout>
+
+    <Button
+        android:id="@+id/button11"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:layout_gravity="center"
+        android:text="Custom Layout Login with Alert" />
 
 </LinearLayout>
