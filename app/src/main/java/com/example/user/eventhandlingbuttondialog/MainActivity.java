@@ -1,21 +1,32 @@
 package com.example.user.eventhandlingbuttondialog;
 
+import android.app.DatePickerDialog;
 import android.content.DialogInterface;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.DatePicker;
+import android.widget.EditText;
 import android.widget.Toast;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Locale;
 
 import static android.view.View.*;
 
 public class MainActivity extends AppCompatActivity implements OnClickListener{
 
-    Button toastBtn,alertDialogdBtn,possitiveadBtn,panAdBtn,mustpnadBtn,npnadpBtn,lvBtn,clBtn,rdBtn;
+    Button toastBtn,alertDialogdBtn,possitiveadBtn,panAdBtn,mustpnadBtn,npnadpBtn,lvBtn,clBtn,rdBtn,cdBtn;
     ArrayList<Integer> selectedItem;
+    EditText etDate;
+    DatePickerDialog datePickerDialog;
+    Calendar dateCalendar;
+    private static SimpleDateFormat format = new SimpleDateFormat("yyyy-dd-mm",Locale.ENGLISH);
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,20 +45,38 @@ public class MainActivity extends AppCompatActivity implements OnClickListener{
         lvBtn.setOnClickListener(this);
         clBtn.setOnClickListener(this);
         rdBtn.setOnClickListener(this);
+        cdBtn.setOnClickListener(this);
     }
 
 
     // This method is for creating Button objects
     public void createButtonObject(){
-        toastBtn = findViewById(R.id.button1);
-        alertDialogdBtn = findViewById(R.id.button2);
-        possitiveadBtn = findViewById(R.id.button3);
-        panAdBtn = findViewById(R.id.button4);
-        mustpnadBtn = findViewById(R.id.button5);
-        npnadpBtn = findViewById(R.id.button6);
-        lvBtn = findViewById(R.id.button7);
-        clBtn = findViewById(R.id.button8);
-        rdBtn = findViewById(R.id.button9);
+        toastBtn = (Button)findViewById(R.id.button1);
+        alertDialogdBtn = (Button)findViewById(R.id.button2);
+        possitiveadBtn = (Button)findViewById(R.id.button3);
+        panAdBtn = (Button)findViewById(R.id.button4);
+        mustpnadBtn = (Button)findViewById(R.id.button5);
+        npnadpBtn = (Button)findViewById(R.id.button6);
+        lvBtn = (Button)findViewById(R.id.button7);
+        clBtn = (Button)findViewById(R.id.button8);
+        rdBtn = (Button)findViewById(R.id.button9);
+        cdBtn = (Button)findViewById(R.id.button10);
+        etDate = (EditText)findViewById(R.id.editText);
+        Calendar newCalender = Calendar.getInstance();
+        datePickerDialog = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                dateCalendar = Calendar.getInstance();
+                dateCalendar.set(year,month,dayOfMonth);
+                etDate.setText(format.format(dateCalendar.getTime()));
+            }
+        }, newCalender.get(Calendar.YEAR),
+                newCalender.get(Calendar.MONTH),
+                newCalender.get(Calendar.DAY_OF_MONTH)
+        );
+
+
+
     }
 
 
@@ -200,6 +229,12 @@ public class MainActivity extends AppCompatActivity implements OnClickListener{
                 }
             });
             builder.show();
+
+        }
+
+        else if(v.getId() == R.id.button10){
+            //This is for Choose Date Button via DatePicker
+            datePickerDialog.show();
 
         }
 
