@@ -11,11 +11,14 @@
         android:id="@+id/textView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="5sp"
+        android:textColor="#ffff"
+        android:padding="3dp"
         android:text="@string/app_title_heading"
         android:textAlignment="center"
         android:textSize="16sp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:background="@color/colorAccent"
+        />
 
     <LinearLayout
         android:id="@+id/linearlayouthorizon1"
